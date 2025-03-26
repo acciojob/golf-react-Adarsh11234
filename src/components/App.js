@@ -23,10 +23,19 @@ class App extends Component {
 		    return <button onClick={this.buttonClickHandler} >Start</button>
 		}
     }
+onMove() {
+    this.setState({ posi:this.state.posi+5 });
+  }
 
     // bind ArrowRight keydown event
     componentDidMount() {
-      
+       const onMove = this.onMove
+       window.addEventListener("keydown", function (e) {
+      const key = e.key;
+      if (key === "ArrowRight") {
+        onMove();
+      }
+    });
     }
 
     render() {
